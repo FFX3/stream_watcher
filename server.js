@@ -21,6 +21,7 @@ app.get('/', async (req, res) => {
   pythonProcess.stdout.on('data', function(data) {
     console.log(data.toString())
     res.setHeader('Content-Type', 'application/json')
+    res.setHeader('Access-Control-Allow-Origin', '*')
     res.send({
       link_status: data.toString().slice(0, -1)
     })
