@@ -1,6 +1,7 @@
 import sys, getopt
 import cv2
 import time
+import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -79,28 +80,28 @@ def test_youtube_link(url):
         return False
     return False
 
-def main(args):
-    url = args[0]
-    
+def check_link(url):
+    print('testing: ' + url)
     if "rtsp://" in url and test_rtsp_link(url):
-        print('online')
         return True
     
     if "vdo.ninja" in url and test_vdo_ninja_link(url):
-        print('online')
         return True
 
     if "video.elumicate" in url and test_vdo_ninja_link(url):
-        print('online')
         return True
 
     if "youtube" in url and  test_youtube_link(url):
-        print('online')
         return True
 
-
-    print('offline')
     return False
 
+
+def check_links(links):
+    result = dict()
+    for link in links:
+        result[link] = check_link(link)
+    return result
+
 if __name__ == "__main__":
-   main(sys.argv[1:])
+   check_links(sys.argv[1:])
