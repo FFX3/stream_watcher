@@ -7,7 +7,7 @@ const batch_size = process.env.BATCH_SIZE ?? 2
 
 ;(async () => {
     try {
-        if (await checkStream('rtsp://elumicatecamera.ddns.net:554/user=admin&password=Dva+Tri=5&channel=1&stream=0.sdp')) {
+        if (await checkStream('')) {
             console.log('online')
         } else {
             console.log('offline')

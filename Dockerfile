@@ -19,4 +19,4 @@ RUN apt-get install python3-opencv -y
 COPY . .
 RUN npm i
 
-CMD [ "node", "debug.js" ]
+CMD [ "node", "index.js" ]
