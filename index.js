@@ -3,7 +3,7 @@ dotenv.config()
 const { checkStream } = require('./check_stream')
 const { supabase } = require('./supabase')
 
-const batch_size = 2
+const batch_size = process.env.BATCH_SIZE ?? 2
 
 ;(async () => {
     while(true) {
